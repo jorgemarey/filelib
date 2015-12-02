@@ -1,6 +1,6 @@
 # filelib
 
-Simple Golang library to search for files that matches some criteria.
+Simple Golang library to search for files that match some criteria.
 
 Just:
 
