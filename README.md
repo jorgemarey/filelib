@@ -16,8 +16,8 @@ import (
 func main() {
   // Create a function. This will be used against the files and
   // only those who match will be returned.
-  match := func(fi os.FileInfo) bool {
-    return !fi.IsDir() && strings.Contains(fi.Name(), "awesome")
+  match := func(fi os.FileInfo, fn string) bool {
+    return !fi.IsDir() && strings.Contains(fn, "awesome")
   }
   // Search for them!
   files := filelib.Search(match, os.Args[1:]...)

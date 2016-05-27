@@ -7,7 +7,7 @@ import (
 )
 
 // Match defines which files are valid
-type Match func(info os.FileInfo) bool
+type Match func(info os.FileInfo, filename string) bool
 
 // Search returns a channel where all the valid files will be sent
 func Search(match Match, file ...string) <-chan string {
@@ -28,7 +28,7 @@ func searchWrapped(file string, match Match, matchFiles chan<- string) {
 	if err != nil {
 		return
 	}
-	if match(info) {
+	if match(info, file) {
 		matchFiles <- file
 	}
 	if info.IsDir() {
